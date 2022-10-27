@@ -12,9 +12,21 @@ app.get('/', (req, res) => {
 app.get('/catagory', (req, res) => {
     res.send(catagories);
 });
+app.get('/catagory/:id', (req, res) => {
+    const id = req.params.id;
+    if (id === "07") {
+        res.send(courses);
+    }
+    else {
+        const getCatagory = catagories.filter(ctg => ctg.id === id);
+        res.send(getCatagory);
+    }
+
+});
 app.get('/courses', (req, res) => {
     res.send(courses);
 });
+
 app.get('/courses/:id', (req, res) => {
     const id = req.params.id;
     const getCourse = courses.find(c => c.id == id);
